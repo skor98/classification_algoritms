@@ -66,201 +66,248 @@ train_year = []
 #________________________________Field of request___________________________________________________
 
 with open('DIR/fieldOfRequest/request_container_spendings.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfRequest.append((string_to_append, FieldOfRequest.spending.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfRequest.append((request, FieldOfRequest.spending.name))
 
-with open('DIR/fieldOfRequest/request_container_revenues.txt', 'r+') as re_file:
-    reader = csv_reader(re_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfRequest.append((string_to_append, FieldOfRequest.revenue.name))
+with open('DIR/fieldOfRequest/request_container_revenues.txt', 'r+') as sp_file:
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfRequest.append((request, FieldOfRequest.revenue.name))
 
-with open('DIR/fieldOfRequest/request_container_deficit.txt', 'r+') as de_file:
-    reader = csv_reader(de_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfRequest.append((string_to_append, FieldOfRequest.deficit.name))
+with open('DIR/fieldOfRequest/request_container_deficit.txt', 'r+') as sp_file:
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfRequest.append((request, FieldOfRequest.deficit.name))
 
 
 #______________________Tax or Non-tax (for revenue only)____________________________________________
 
 with open('DIR/tax/tax.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_tax.append((string_to_append, FieldOfRequest.tax_revenue.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_tax.append((request, FieldOfRequest.tax_revenue.name))
 
 with open('DIR/tax/non_tax.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_tax.append((string_to_append, FieldOfRequest.non_tax_revenue.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_tax.append((request, FieldOfRequest.non_tax_revenue.name))
 
 with open('DIR/tax/all.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_tax.append((string_to_append, FieldOfRequest.all_revenue.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_tax.append((request, FieldOfRequest.all_revenue.name))
 
 
 #__________Actual or Current or Planned (for all fields of request)__________________________________
 
 with open('DIR/type/actual.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_type.append((string_to_append, FieldOfRequest.actual.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_type.append((request, FieldOfRequest.actual.name))
 
 with open('DIR/type/current.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_type.append((string_to_append, FieldOfRequest.current.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_type.append((request, FieldOfRequest.current.name))
 
 with open('DIR/type/planned.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_type.append((string_to_append, FieldOfRequest.planned.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_type.append((request, FieldOfRequest.planned.name))
 
 
 #_____________________Field of spendings (for spendings only)________________________________________
 
 with open('DIR/fieldOfSpending/culture.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.culture.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.culture.name))
 
 with open('DIR/fieldOfSpending/defense.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.defense.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.defense.name))
 
 with open('DIR/fieldOfSpending/economy.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.economy.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.economy.name))
 
 with open('DIR/fieldOfSpending/education.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.education.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.education.name))
 
 with open('DIR/fieldOfSpending/environmental_protection.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.environmental_protection.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.environmental_protection.name))
 
 with open('DIR/fieldOfSpending/federal_issue.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.federal_issue.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.federal_issue.name))
 
 with open('DIR/fieldOfSpending/health.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.health.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.health.name))
 
 with open('DIR/fieldOfSpending/household.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.household.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.household.name))
 
 with open('DIR/fieldOfSpending/safety.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.safety.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.safety.name))
 
 with open('DIR/fieldOfSpending/social_policy.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.social_policy.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.social_policy.name))
 
 with open('DIR/fieldOfSpending/sport.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_fieldOfSpending.append((string_to_append, FieldOfRequest.sport.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_fieldOfSpending.append((request, FieldOfRequest.sport.name))
 
 #__________________________Years_____________________________________________
 
 with open('DIR/year/2007.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2007.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2007.name))
 with open('DIR/year/2008.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2008.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2008.name))
 with open('DIR/year/2009.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2009.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2009.name))
 with open('DIR/year/2010.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2010.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2010.name))
 with open('DIR/year/2011.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2011.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2011.name))
 with open('DIR/year/2012.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2012.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2012.name))
 with open('DIR/year/2013.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2013.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2013.name))
 with open('DIR/year/2014.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2014.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2014.name))
 with open('DIR/year/2015.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2015.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2015.name))
 with open('DIR/year/2016.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2016.name))
-with open('DIR/year/2017.txt', 'r+') as sp_file:
-    reader = csv_reader(sp_file)
-    for row in reader:
-        string_to_append = prepare_the_string(row)
-        train_year.append((string_to_append, FieldOfRequest.year_2017.name))
+    for row in sp_file:
+        request = ''
+        for word in row.split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        train_year.append((request, FieldOfRequest.year_2017.name))
 
-test = [
-    ('сколько денег заработала Чечня в 2011 году', FieldOfRequest.revenue.name),
-    ('сколько денег потрачено на экономику в этом году', FieldOfRequest.spending.name),
-    ('сколько мы подняли на налогах год назад', FieldOfRequest.revenue.name),
-    ('сколько Россия потратит на образование', FieldOfRequest.spending.name),
-    ('дефицит Москвы в этом году', FieldOfRequest.deficit.name),
-    ('дефицит федерального бюджета 2013', FieldOfRequest.deficit.name),
-    ('тверская область расходы на спорт в 2016 году', FieldOfRequest.spending.name)
-]
+
 
 cl_fieldOfRequest = NaiveBayesClassifier(train_fieldOfRequest)
 cl_tax = NaiveBayesClassifier(train_tax)
@@ -268,19 +315,26 @@ cl_type = NaiveBayesClassifier(train_type)
 cl_fieldOfSpending = NaiveBayesClassifier(train_fieldOfSpending)
 cl_year = NaiveBayesClassifier(train_year)
 
+test_fieldOfRequest = []
+with open('test.txt', 'r+') as sp_file:
+    request = ''
+    for row in sp_file:
+        for word in row.split('#')[0].split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        test_fieldOfRequest.append((request, row.split('#')[1].strip()))
 
-request = 'фактические расходы москвы на жкх в 17 году'
 
-#print(cl_fieldOfRequest.accuracy(test))
+print(cl_fieldOfRequest.accuracy(test_fieldOfRequest))
 
 #print(cl_fieldOfRequest.classify(request))
 
-#'''
+'''
 if (cl_fieldOfRequest.classify(request) == 'spending'):
     print(cl_fieldOfRequest.classify(request), cl_fieldOfSpending.classify(request), cl_type.classify(request), cl_year.classify(request))
 elif (cl_fieldOfRequest.classify(request) == 'revenue'):
     print(cl_fieldOfRequest.classify(request), cl_tax.classify(request), cl_type.classify(request), cl_year.classify(request))
 elif (cl_fieldOfRequest.classify(request) == 'deficit'):
     print(cl_fieldOfRequest.classify(request), cl_type.classify(request), cl_year.classify(request))
-#'''
+'''
 
