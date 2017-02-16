@@ -317,17 +317,32 @@ cl_year = NaiveBayesClassifier(train_year)
 
 test_fieldOfRequest = []
 with open('test.txt', 'r+') as sp_file:
-    request = ''
     for row in sp_file:
+        request = ''
         for word in row.split('#')[0].split(' '):
             word = stem.stem(word)
             request += (word + ' ')
         test_fieldOfRequest.append((request, row.split('#')[1].strip()))
 
 
-print(cl_fieldOfRequest.accuracy(test_fieldOfRequest))
 
-#print(cl_fieldOfRequest.classify(request))
+with open('test.txt', 'r+') as sp_file:
+    for row in sp_file:
+        request = ''
+        for word in row.split('#')[0].split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        print(row.split('#')[0].strip())
+        prob_dist = cl_fieldOfRequest.prob_classify(request)
+        #print("Класс: " + cl_fieldOfRequest.classify(request))
+        print("Я считаю, что это:  " + prob_dist.max())
+        print("Вероятность revenue:  " + repr(prob_dist.prob("revenue")))
+        print("Вероятность spending:  " + repr(prob_dist.prob("spending")))
+        print("Вероятность deficit:  " + repr(prob_dist.prob("deficit")))
+        print("\n")
+
+
+print("Точность результата:  " + repr(cl_fieldOfRequest.accuracy(test_fieldOfRequest)))
 
 '''
 if (cl_fieldOfRequest.classify(request) == 'spending'):
