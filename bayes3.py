@@ -5,6 +5,7 @@ from enum import Enum
 from csv import reader as csv_reader
 from nltk.stem.snowball import RussianStemmer
 import pickle as p
+import nltk
 
 stem = RussianStemmer(ignore_stopwords=True)
 
@@ -71,7 +72,7 @@ with open('DIR/fieldOfRequest/request_container_spendings.txt', 'r+') as sp_file
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfRequest.append((request, FieldOfRequest.spending.name))
+        train_fieldOfRequest.append((request.strip(), FieldOfRequest.spending.name))
 
 with open('DIR/fieldOfRequest/request_container_revenues.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -79,7 +80,7 @@ with open('DIR/fieldOfRequest/request_container_revenues.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfRequest.append((request, FieldOfRequest.revenue.name))
+        train_fieldOfRequest.append((request.strip(), FieldOfRequest.revenue.name))
 
 with open('DIR/fieldOfRequest/request_container_deficit.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -87,7 +88,7 @@ with open('DIR/fieldOfRequest/request_container_deficit.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfRequest.append((request, FieldOfRequest.deficit.name))
+        train_fieldOfRequest.append((request.strip(), FieldOfRequest.deficit.name))
 
 
 #______________________Tax or Non-tax (for revenue only)____________________________________________
@@ -152,7 +153,7 @@ with open('DIR/fieldOfSpending/culture.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.culture.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.culture.name))
 
 with open('DIR/fieldOfSpending/defense.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -160,7 +161,7 @@ with open('DIR/fieldOfSpending/defense.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.defense.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.defense.name))
 
 with open('DIR/fieldOfSpending/economy.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -168,7 +169,7 @@ with open('DIR/fieldOfSpending/economy.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.economy.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.economy.name))
 
 with open('DIR/fieldOfSpending/education.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -176,7 +177,7 @@ with open('DIR/fieldOfSpending/education.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.education.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.education.name))
 
 with open('DIR/fieldOfSpending/environmental_protection.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -184,7 +185,7 @@ with open('DIR/fieldOfSpending/environmental_protection.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.environmental_protection.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.environmental_protection.name))
 
 with open('DIR/fieldOfSpending/federal_issue.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -192,7 +193,7 @@ with open('DIR/fieldOfSpending/federal_issue.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.federal_issue.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.federal_issue.name))
 
 with open('DIR/fieldOfSpending/health.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -200,7 +201,7 @@ with open('DIR/fieldOfSpending/health.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.health.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.health.name))
 
 with open('DIR/fieldOfSpending/household.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -208,7 +209,7 @@ with open('DIR/fieldOfSpending/household.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.household.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.household.name))
 
 with open('DIR/fieldOfSpending/safety.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -216,7 +217,7 @@ with open('DIR/fieldOfSpending/safety.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.safety.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.safety.name))
 
 with open('DIR/fieldOfSpending/social_policy.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -224,7 +225,7 @@ with open('DIR/fieldOfSpending/social_policy.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.social_policy.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.social_policy.name))
 
 with open('DIR/fieldOfSpending/sport.txt', 'r+') as sp_file:
     for row in sp_file:
@@ -232,7 +233,7 @@ with open('DIR/fieldOfSpending/sport.txt', 'r+') as sp_file:
         for word in row.split(' '):
             word = stem.stem(word)
             request += (word + ' ')
-        train_fieldOfSpending.append((request, FieldOfRequest.sport.name))
+        train_fieldOfSpending.append((request.strip(), FieldOfRequest.sport.name))
 
 #__________________________Years_____________________________________________
 
@@ -324,8 +325,17 @@ with open('test.txt', 'r+') as sp_file:
             request += (word + ' ')
         test_fieldOfRequest.append((request, row.split('#')[1].strip()))
 
+test_fieldOfSpending = []
+with open('test_spending_field.txt', 'r+') as sp_file:
+    for row in sp_file:
+        request = ''
+        for word in row.split('#')[0].split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        test_fieldOfSpending.append((request, row.split('#')[1].strip()))
 
 
+'''
 with open('test.txt', 'r+') as sp_file:
     for row in sp_file:
         request = ''
@@ -341,8 +351,36 @@ with open('test.txt', 'r+') as sp_file:
         print("Вероятность deficit:  " + repr(prob_dist.prob("deficit")))
         print("\n")
 
+#print("Точность результата:  " + repr(cl_fieldOfRequest.accuracy(test_fieldOfRequest)))
+#cl_fieldOfRequest.show_informative_features(45)
+'''
 
-print("Точность результата:  " + repr(cl_fieldOfRequest.accuracy(test_fieldOfRequest)))
+with open('test_spending_field.txt', 'r+') as sp_file:
+    for row in sp_file:
+        request = ''
+        for word in row.split('#')[0].split(' '):
+            word = stem.stem(word)
+            request += (word + ' ')
+        print(row.split('#')[0].strip())
+        prob_dist = cl_fieldOfSpending.prob_classify(request)
+        #print("Класс: " + cl_fieldOfRequest.classify(request))
+        print("Я считаю, что это:  " + prob_dist.max())
+        print("Вероятность culture:  " + repr(prob_dist.prob("culture")))
+        print("Вероятность defense:  " + repr(prob_dist.prob("defense")))
+        print("Вероятность economy:  " + repr(prob_dist.prob("economy")))
+        print("Вероятность education:  " + repr(prob_dist.prob("education")))
+        print("Вероятность environmental_protection:  " + repr(prob_dist.prob("environmental_protection")))
+        print("Вероятность federal_issue:  " + repr(prob_dist.prob("federal_issue")))
+        print("Вероятность health:  " + repr(prob_dist.prob("health")))
+        print("Вероятность household:  " + repr(prob_dist.prob("household")))
+        print("Вероятность safety:  " + repr(prob_dist.prob("safety")))
+        print("Вероятность social_policy:  " + repr(prob_dist.prob("social_policy")))
+        print("Вероятность sport:  " + repr(prob_dist.prob("sport")))
+        print("\n")
+
+print("Точность результата:  " + repr(cl_fieldOfSpending.accuracy(test_fieldOfSpending)))
+#print("Точность результата:  " + repr(cl_fieldOfRequest.accuracy(test_fieldOfRequest)))
+#cl_fieldOfRequest.show_informative_features(45)
 
 '''
 if (cl_fieldOfRequest.classify(request) == 'spending'):
